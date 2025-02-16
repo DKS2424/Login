@@ -35,10 +35,26 @@ app.get('/', (req, res) => {
 });
 
 
+
+app.get('/register', (req, res) => {
+    res.render('register');
+})
+
+app.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new Login({ username: username, password: hashedPassword });
+    await newUser.save();  
+    if(newUser){
+        res.render('Home', { newUser: true, message: "Registered Successfully! Try to Login!!" });
+    } else {
+    res.render('Home', { newUser:false, message: "Registeration Failed!!" });
+    }
+})
+
 app.get('/login', (req, res) => {
     res.render('Login')
 })
-
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -55,21 +71,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/register', (req, res) => {
-    res.render('register');
-})
-
-app.post('/register', async (req, res) => {
-    const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new Login({ username: username, password: hashedPassword });
-    await newUser.save();  
-    if(newUser){
-    res.render('Home', { newUser: true, message: "Registered Successfully! Try to Login!!" });
-    } else {
-    res.render('Home', { newUser:false, message: "Registeration Failed!!" });
-    }
-})
 
 
 
