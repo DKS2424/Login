@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h2{
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 3rem;
+}
+
+
+a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #030303;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #555;
+}
+
+    </style>
+
+</head>
+
+<body>
+    <h2> Welcome</h2>
+    <% if (typeof newUser !== "undefined" || typeof isMatch !== "undefined" ) { %>
+        <script>
+            alert("<%= message %>");
+        </script>
+    <% } %>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+</body>
+
+</html>
